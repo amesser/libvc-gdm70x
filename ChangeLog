@@ -1,0 +1,44 @@
+2011-11-13 Andreas Messer <andi@bastelmap.de>
+
+* fix ascii->float for applications using locale
+
+2006-01-11 Andreas Messer <andreas.messer@stud-mail.uni-wuerzburg.de>
+
+* use function vc_gdm70x_read to read from gdm70x
+
+2006-01-09 Andreas Messer <andreas.messer@stud-mail.uni-wuerzburg.de>
+
+* added new command line option 'count', suggested by Olaf Schultz
+
+2005-09-20 Andreas Messer <andreas.messer@stud-mail.uni-wuerzburg.de>
+
+* start work on gvc-gdm70x, a graphical interface
+	
+2005-01-27 Andreas Messer <andreas.messer@gmx.de>
+
+* vc-gdm70x: added --version, --help switch
+* release of libvc-gdm70x version 0.2, vc-gdm70x 0.2.0
+	
+2005-01-25 Andreas Messer <andreas.messer@gmx.de>
+
+* vc-gdm70x: receive images
+
+2005-01-20 Andreas Messer <andreas.messer@gmx.de>
+	
+* work on vc-gdm70x: print-value formating
+* control verbose level of library with vc_gdm70x_verbose
+* added new units
+* vc-gdm70x_parsevalue complete rewrite
+	
+2005-01-19 Andreas Messer <andreas.messer@gmx.de>
+
+* added to struct vc-gdm70x_data the field unsigned char mult
+* changed vc-gdm70x_parsevalue to assign a value to field 'mult' and
+  dont divide the field 'value' by the preceding factor
+* increase libvc-gdm70x major number
+* worked on vc-gdm70x: added command line options, make 'print_value'
+  accept a format string.
+
+2005-01-09 Andreas Messer <andreas.messer@gmx.de>
+
+* inital release of version 0.1

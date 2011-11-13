@@ -1,0 +1,19 @@
+2011-11-13 Andreas Messer <andi@bastelmap.de>
+
+* fix ascii->float for applications using locale
+* upload source to github
+* release of libvc-gdm70x version 0.2.2
+
+2006-01-09 Andreas Messer <andreas.messer@stud-mail.uni-wuerzburg.de>
+
+* added new command line option 'count', suggested by Olaf Schultz
+* release of vc-gdm70x version 0.2.1
+
+2005-01-27 Andreas Messer <andreas.messer@gmx.de>
+
+* vc-gdm70x: added --version, --help switch
+* release of libvc-gdm70x version 0.2, vc-gdm70x 0.2.0
+	
+2005-01-09 Andreas Messer <andreas.messer@gmx.de>
+
+* inital release of version 0.1
