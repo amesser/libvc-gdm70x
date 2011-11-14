@@ -1,3 +1,7 @@
+2011-11-14 Andreas Messer <andi@bastelmap.de>
+
+* update to GPLv3
+
 2011-11-13 Andreas Messer <andi@bastelmap.de>
 
 * fix ascii->float for applications using locale
