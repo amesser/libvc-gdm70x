@@ -24,6 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <getopt.h>
 #include <assert.h>
 #include <time.h>
+#include <stdlib.h>
 
 const struct option longopts [] = {
   { "device", required_argument, 0, 'd' },
@@ -119,8 +120,16 @@ int print_values(struct vc_gdm70x* gdm_p, void* ptr)
 
 	  switch(c) 
 	    {
-	    case 'D': fprintf(stdout,"%.3f",data_p->value); break;
-	    case 'M': fputc(data_p->mult,stdout); break;
+	    case 'D': 
+        if (data_p->mult != OVER)
+          fprintf(stdout,"%.3f",data_p->value);
+        else
+          fputs("OVER",stdout);
+        break;
+	    case 'M': 
+        if (data_p->mult != OVER)
+          fputc(data_p->mult,stdout);
+        break;
 	    case 'U':
 	      switch(data_p->unit)
 		{

@@ -48,7 +48,8 @@ enum vc_mult {
 	       NONE=' ',  
 	       MILLI='m', 
 	       MICRO='u', 
-         NANO='n'
+         NANO='n',
+         OVER='#',
 };
 
 /* struct containing the received data from one channel */

@@ -395,6 +395,10 @@ vc_gdm70x_parsevalue(const char* str, struct vc_gdm70x_data* data_p)
     case 'u': data_p->mult = MICRO; break;
     default:  data_p->mult = NONE;  break;
     }
+
+  /* check for overvoltage/autorange */
+  if (str[3] == '4')
+    data_p->mult = OVER;
   
   data_p->unit=UNKNOWN;
 
