@@ -1,6 +1,8 @@
 2013-01-28 Andreas Messer <andi@bastelmap.de>
 
 * added support for timestamping
+* fixed default values shown in help output
+* fixed automake 11 build
 
 2011-11-13 Andreas Messer <andi@bastelmap.de>
 

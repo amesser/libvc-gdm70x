@@ -25,6 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <assert.h>
 #include <time.h>
 #include <stdlib.h>
+#include <string.h>
 
 const struct option longopts [] = {
   { "device", required_argument, 0, 'd' },
@@ -257,13 +258,13 @@ void print_help()
   puts("Options: (default values are in brackets)");
   puts("  -h, --help                   displays this help and exit");
   puts("  -d, --device=DEVICE          RS232 device to which the GDM is connected"); 
-  puts("                               [/dev/ttyS0]");
+  printf("                               [%s]\n", default_device);
   puts("  -i, --enable-image           enables receiving of images");
   puts("  -c, --count=COUNT            number of records to fetch [0 (infinity)]");
   puts("      --filename-format=FORMAT format of the filename of the images");
-  puts("                               [DATA1: %D1 %M1%U1 %T1; DATA2: %D2 %M2%U2 %T2\\n]");
+  printf("                               [%s]\n", default_file);
   puts("  -f, --format=FORMAT          format of the output of the measured values");
-  puts("                               [GDM70X-%Y%M%D-%h%m-%N.xpm]");
+  printf("                               [%*.*s\\n]\n", 0 ,strlen(default_print) - 1, default_print);
   puts("  -v, --verbose                makes output more noisy, repeating the switch");
   puts("                               increases level of noise");
   puts("  -V, --version                prints version info");
