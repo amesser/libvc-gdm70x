@@ -279,7 +279,7 @@ void print_help()
   puts("  %U1, %U2 string showing what is measured e.g. V, A, F, Ohm...");
   puts("  %I       Number of Record from GDM");
   puts("  %C       Time the record was transmitted by GDM in seconds since epoch.");
-  puts("  %I       Time the record was transmitted by GDM in seconds since program start.");
+  puts("  %S       Time the record was transmitted by GDM in seconds since program start.");
   puts("  %%       character '%'");
   puts("");
   puts("  \\n       newline");
