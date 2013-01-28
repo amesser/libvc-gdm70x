@@ -21,7 +21,7 @@ bootstrap.sh script at first. You need to have
 the autotools (autoconf, automake and libtoolize)
 installed::
 
-        $ sh bootstrap.sh
+  $ sh bootstrap.sh
 
 You'll need a C-Compiler and the standard C-Headers to
 compile the library and the programm. I think you have 
@@ -82,7 +82,10 @@ obtain the measured data or an image from a GDM. Type::
 
 	$ vc-gdm70x --help
 
-to see how to use it. 
+to see how to use it. You can easily change the output format
+too meet your needs. E.g. CSV output::
+
+  $ vc-gdm70x -f "%S;%D1;%U1;%D2;%U2\n"
 
 Besides that I'am currently working on a graphical application
 for recording and displaying the data: https://github.com/amesser/mmgui 

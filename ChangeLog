@@ -1,3 +1,7 @@
+2013-01-28 Andreas Messer <andi@bastelmap.de>
+
+* added support for timestamping
+
 2011-11-13 Andreas Messer <andi@bastelmap.de>
 
 * fix ascii->float for applications using locale

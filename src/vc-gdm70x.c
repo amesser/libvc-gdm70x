@@ -2,7 +2,7 @@
 This program demonstrates the use of libvc-gdm70x, a library to connect to 
 Voltcraft GDM 70x Multimeters via RS232.
 
-Copyright (C) 2005-2011  Andreas Messer <andi@bastelmap.de>
+Copyright (C) 2005-2013  Andreas Messer <andi@bastelmap.de>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -39,11 +39,13 @@ const struct option longopts [] = {
 };
 
 const char default_device[] = "/dev/ttyS0";
-const char default_print[] = "DATA1: %D1 %M1%U1 %T1; DATA2: %D2 %M2%U2 %T2\n";
+const char default_print[] = "TIME: %S DATA1: %D1 %M1%U1 %T1; DATA2: %D2 %M2%U2 %T2\n";
 const char default_file[] = "GDM70X-%Y%M%D-%h%m-%N.xpm";
 
 static int verbose = 0;
 static int record_count = 0;
+
+static struct timespec ts_start;
 
 int format_filename(char* filename, const char* format_string, const int count)
 {
@@ -161,6 +163,12 @@ int print_values(struct vc_gdm70x* gdm_p, void* ptr)
 		}
 	      break;
 	    case 'I': fprintf(stdout,"%i",record_count); break;
+	    case 'C': fprintf(stdout,"%.3lf", (double) gdm_p->ts.tv_sec + 
+	                                      (double) gdm_p->ts.tv_nsec * 1e-9);
+		break;
+	    case 'S': fprintf(stdout,"%.3lf", (double) (gdm_p->ts.tv_sec  - ts_start.tv_sec) + 
+	                                      (double) (gdm_p->ts.tv_nsec - ts_start.tv_nsec) * 1e-9);
+		break;
 	    case '%': fputc('%',stdout); break;
 	    default:
 	      fputs("vc-gdm70x: error in formatstring.\n",stderr);
@@ -269,6 +277,8 @@ void print_help()
   puts("  %T1, %T2 AC or DC, or nothing");
   puts("  %U1, %U2 string showing what is measured e.g. V, A, F, Ohm...");
   puts("  %I       Number of Record from GDM");
+  puts("  %C       Time the record was transmitted by GDM in seconds since epoch.");
+  puts("  %I       Time the record was transmitted by GDM in seconds since program start.");
   puts("  %%       character '%'");
   puts("");
   puts("  \\n       newline");
@@ -359,10 +369,10 @@ int main(int argc, char** argv){
     exit(-1);
   }
 
-  vc_gdm70x_setfunc_data(gdm_p,print_values, p_print);
+  vc_gdm70x_setfunc_data(gdm_p,print_values, (void*)p_print);
 
   if(enable_image)
-    vc_gdm70x_setfunc_image(gdm_p,write_xpm,p_file);
+    vc_gdm70x_setfunc_image(gdm_p,write_xpm,(void*)p_file);
   else
     vc_gdm70x_setfunc_image(gdm_p,0,0);
 
@@ -387,6 +397,8 @@ int main(int argc, char** argv){
   if(verbose)
     fprintf(stderr,"vc-gdm70x: measuring.\n");
 
+  clock_gettime(CLOCK_REALTIME,&ts_start);
+  
   if(record_max == 0) {
     while(1)
       vc_gdm70x_do(gdm_p,0);

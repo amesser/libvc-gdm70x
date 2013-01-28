@@ -2,7 +2,7 @@
 This file is part of libvc-gdm70x, a library to connect to Voltcraft GDM 70x
 Multimeters via RS232.
 
-Copyright (C) 2005-2011  Andreas Messer <andi@bastelmap.de>
+Copyright (C) 2005-2013  Andreas Messer <andi@bastelmap.de>
 
 libvc-gdm70x is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define __VC_GDM70X__
 
 #include <termios.h>
+#include <time.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -72,6 +73,11 @@ struct vc_gdm70x {
   struct vc_gdm70x_data data2; /* second channel */
 
   unsigned char* image;
+  
+  struct timespec ts; /* the time the first byte of the
+                         record was received */
+                         
+  /* private elements following below */
 
   int (* func_data) (struct vc_gdm70x* gdm_p, void* ptr);
   int (* func_image) (struct vc_gdm70x* gdm_p, void* ptr);

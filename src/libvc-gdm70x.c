@@ -2,7 +2,7 @@
 This file is part of libvc-gdm70x, a library to connect to Voltcraft GDM 70x
 Multimeters via RS232.
 
-Copyright (C) 2005-2011  Andreas Messer <andi@bastelmap.de>
+Copyright (C) 2005-2013  Andreas Messer <andi@bastelmap.de>
 
 libvc-gdm70x is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -266,7 +266,10 @@ vc_gdm70x_do(struct vc_gdm70x* gdm_p, int skip)
   do {
     memset(buffer,0,26);
     i = 0;
+    
     i += vc_gdm70x_read(gdm_p, buffer,2);
+    
+    clock_gettime(CLOCK_REALTIME,&(gdm_p->ts));
 
     if(i < 2) {  
       if(vc_gdm70x_verbose > 1)
