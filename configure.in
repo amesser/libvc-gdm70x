@@ -1,7 +1,7 @@
 define([author],[Andreas Messer])
-define([email],[andreas.messer@stud-mail.uni-wuerzburg.de])
-define([libvc_gdm70x_version],[0.2.2])
-define([vc_gdm70x_version],[0.2.1])
+define([email],[andi@bastelmap.de])
+define([libvc_gdm70x_version],[0.2.3])
+define([vc_gdm70x_version],[0.2.2])
 
 AC_INIT(libvc-gdm70x,libvc_gdm70x_version,email)
 AC_CONFIG_SRCDIR(src/libvc-gdm70x.c)
