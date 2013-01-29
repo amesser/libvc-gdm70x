@@ -29,5 +29,7 @@ AC_HEADER_STDC
 AC_CHECK_HEADERS(stdio.h errno.h getopt.h assert.h time.h termios.h fcntl.h assert.h sys/ioctl.h,,AC_MSG_ERROR([missing header file!]))
 AC_CHECK_FUNCS(fprintf puts fputs malloc memset free perror tcgetattr memcpy cfsetispeed cfsetospeed tcsetattr ioctl close open read printf fwrite atof strncmp time localtime_r sprintf fputc fflush fopen fclose printf getopt_long exit,,AC_MSG_ERROR([missing function!]))
 
+AC_SEARCH_LIBS(clock_gettime, rt,,AC_MSG_ERROR([Failed to link against clock_gettime]))
+
 AC_CONFIG_FILES([libvc-gdm70x.pc])
 AC_OUTPUT(Makefile src/Makefile)
